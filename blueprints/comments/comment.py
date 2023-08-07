@@ -13,7 +13,7 @@ def add_comment():
 @comment_bp.route('/comments/<id>', methods=['PUT'])
 def update_comment(id):
     try:
-        comment = Comment.get(Comment.id == id)
+        comment = Comment.get_by_id(id)
         content = request.json['content']
         comment.content = content
         comment.save()
