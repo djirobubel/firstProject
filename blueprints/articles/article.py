@@ -12,7 +12,7 @@ def get_articles():
 @article_bp.route('/articles/<id>')
 def get_article(id):
     try:
-        article = Article.get_by_id(id)
+        article = Article.get(Article.id == id)
         comments = list(Comment.select().where(Comment.article_id == id).dicts())
         return {'name': article.name, 'content': article.content, 'comments': comments}
 
