@@ -7,10 +7,5 @@ app.register_blueprint(article_bp)
 app.register_blueprint(comment_bp)
 
 
-@app.route('/')
-def index():
-    return 'Welcome!!!'
-
-
 if __name__ == "__main__":
     app.run()
