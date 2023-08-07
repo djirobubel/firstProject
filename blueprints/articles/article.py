@@ -6,16 +6,14 @@ article_bp = Blueprint('article', __name__)
 
 @article_bp.route('/articles')
 def get_articles():
-    with db:
-        return list(Article.select().dicts())
+    return list(Article.select().dicts())
 
 
 @article_bp.route('/articles/<id>')
 def get_article(id):
-    with db:
-        article = Article.get_by_id(id)
-        comments = list(Comment.select().where(Comment.article_id == id).dicts())
-        return {'name': article.name, 'content': article.content, 'comments': comments}
+    article = Article.get_by_id(id)
+    comments = list(Comment.select().where(Comment.article_id == id).dicts())
+    return {'name': article.name, 'content': article.content, 'comments': comments}
 
 
 @article_bp.route('/articles', methods=['POST'])
