@@ -29,7 +29,7 @@ def add_article():
 @article_bp.route('/articles/<id>', methods=['PUT'])
 def update_article(id):
     try:
-        article = Article.get_by_id(id)
+        article = Article.get(Article.id == id)
         name = request.json['name']
         content = request.json['content']
         article.name = name
