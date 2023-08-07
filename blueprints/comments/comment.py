@@ -4,9 +4,9 @@ from models import *
 comment_bp = Blueprint('comment', __name__)
 
 
-@comment_bp.route('/comments/<article_id>', methods=['POST'])
-def add_comment(article_id):
-    comment = Comment.create(content=request.json['content'], article_id=article_id)
+@comment_bp.route('/comments', methods=['POST'])
+def add_comment():
+    comment = Comment.create(content=request.json['content'], article_id=request.json['articleId'])
     return {'id': comment.id}
 
 
