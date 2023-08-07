@@ -6,7 +6,7 @@ article_bp = Blueprint('article', __name__)
 
 @article_bp.route('/articles')
 def get_articles():
-    return list(Article.select().dicts())
+    return list(Article.select().limit(10).order_by(Article.id.desc()).dicts())
 
 
 @article_bp.route('/articles/<id>')
