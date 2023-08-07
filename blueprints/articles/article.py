@@ -11,9 +11,13 @@ def get_articles():
 
 @article_bp.route('/articles/<id>')
 def get_article(id):
-    article = Article.get_by_id(id)
-    comments = list(Comment.select().where(Comment.article_id == id).dicts())
-    return {'name': article.name, 'content': article.content, 'comments': comments}
+    try:
+        article = Article.get_by_id(id)
+        comments = list(Comment.select().where(Comment.article_id == id).dicts())
+        return {'name': article.name, 'content': article.content, 'comments': comments}
+
+    except Article.DoesNotExist:
+        return {"error": "not found"}, 404
 
 
 @article_bp.route('/articles', methods=['POST'])
