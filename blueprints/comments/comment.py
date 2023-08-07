@@ -20,7 +20,7 @@ def update_comment(id):
         return Response(status=204)
 
     except Comment.DoesNotExist:
-        return {"error": "not found"}, 404
+        return {'error': 'not found'}, 404
 
 
 @comment_bp.route('/comments/<id>', methods=['DELETE'])
@@ -31,4 +31,4 @@ def delete_comment(id):
         return Response(status=204)
 
     except Comment.DoesNotExist:
-        return {"error": "not found"}, 404
+        return {'error': 'not found'}, 404

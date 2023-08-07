@@ -17,7 +17,7 @@ def get_article(id):
         return {'name': article.name, 'content': article.content, 'comments': comments}
 
     except Article.DoesNotExist:
-        return {"error": "not found"}, 404
+        return {'error': 'not found'}, 404
 
 
 @article_bp.route('/articles', methods=['POST'])
@@ -38,7 +38,7 @@ def update_article(id):
         return Response(status=204)
 
     except Article.DoesNotExist:
-        return {"error": "not found"}, 404
+        return {'error': 'not found'}, 404
 
 
 @article_bp.route('/articles/<id>', methods=['DELETE'])
@@ -49,4 +49,4 @@ def delete_article(id):
         return Response(status=204)
 
     except Article.DoesNotExist:
-        return {"error": "not found"}, 404
+        return {'error': 'not found'}, 404
